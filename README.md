@@ -1,605 +1,415 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Geography of Fast Food Pricing - Research Project</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.8;
-            color: #2c3e50;
-            background: #f8f9fa;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        h1 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-        
-        .conference-info {
-            font-size: 1em;
-            margin-top: 20px;
-            opacity: 0.95;
-            font-style: italic;
-        }
-        
-        .authors {
-            font-size: 1.1em;
-            margin: 20px 0;
-            font-weight: 500;
-        }
-        
-        .affiliation {
-            font-size: 0.95em;
-            opacity: 0.9;
-            margin-top: 10px;
-        }
-        
-        .paper-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 40px 0;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn {
-            display: block;
-            padding: 15px 25px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-            border: 2px solid transparent;
-        }
-        
-        .btn-primary {
-            background: #2a5298;
-            color: white;
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: #2a5298;
-            border: 2px solid #2a5298;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        .content-section {
-            background: white;
-            padding: 40px;
-            margin: 30px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        
-        h2 {
-            color: #1e3c72;
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #2a5298;
-            padding-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        h3 {
-            color: #2a5298;
-            font-size: 1.4em;
-            margin: 30px 0 15px 0;
-            font-weight: 600;
-        }
-        
-        .abstract {
-            font-size: 1.05em;
-            line-height: 1.9;
-            text-align: justify;
-            padding: 30px;
-            background: #f8f9fa;
-            border-left: 5px solid #2a5298;
-            margin: 20px 0;
-        }
-        
-        .key-results {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .result-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .result-value {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .result-label {
-            font-size: 0.95em;
-            opacity: 0.95;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.95em;
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background-color: #2a5298;
-            color: white;
-            font-weight: 600;
-        }
-        
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .highlight-box {
-            background: #e8f4f8;
-            border-left: 5px solid #2a5298;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-        
-        .methodology-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        .methodology-list li {
-            padding: 15px;
-            margin: 10px 0;
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            border-radius: 4px;
-        }
-        
-        .methodology-list strong {
-            color: #2a5298;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        code {
-            background: #f4f4f4;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #e83e8c;
-            font-size: 0.9em;
-        }
-        
-        .citation-box {
-            background: #f8f9fa;
-            border: 2px solid #2a5298;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            line-height: 1.6;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: #2c3e50;
-            color: white;
-            margin-top: 60px;
-        }
-        
-        .repository-structure {
-            background: #282c34;
-            color: #abb2bf;
-            padding: 20px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-        
-        .tree-icon {
-            color: #61dafb;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .content-section {
-                padding: 20px;
-            }
-            
-            .paper-actions {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div class="container">
-            <h1>The Geography of Fast Food Pricing:<br>Economic Determinants of Menu Prices Across America</h1>
-            <div class="authors">
-                Akhil Kambhatla<sup>1</sup> • Mokshda Gangrade<sup>1</sup> • Vyom Agarwal<sup>1</sup>
-            </div>
-            <div class="affiliation">
-                <sup>1</sup>Department of Information Studies, University of Maryland, College Park
-            </div>
-            <div class="conference-info">
-                DATA602 - Principles of Data Science | December 2025
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="paper-actions">
-            <a href="research_paper.pdf" class="btn btn-primary" download>📄 Download Paper (PDF)</a>
-            <a href="https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io" class="btn btn-secondary" target="_blank">💻 View Code</a>
-            <a href="https://akhil-kambhatla.github.io" class="btn btn-secondary" target="_blank">📊 Interactive Demo</a>
-            <a href="#bibtex" class="btn btn-secondary">📚 BibTeX</a>
-        </div>
-        
-        <div class="content-section">
-            <h2>Abstract</h2>
-            <div class="abstract">
-                This study investigates the economic and geographic factors influencing fast-food menu pricing across 6,717 restaurant locations in the United States. Through comprehensive analysis of 1.72 million menu items from Chipotle, Domino's, and Papa John's, we integrate web-scraped pricing data with US Census income statistics, Department of Labor minimum wage data, and Bureau of Labor Statistics regional food prices. Our statistical analysis reveals that while economic variables (income, minimum wage) are statistically significant predictors, they explain only 7.7% of price variance (R² = 0.077). In contrast, machine learning models incorporating BERT text embeddings of menu items achieve 98.6% explanatory power (R² = 0.986, MAE = $0.75). This dramatic improvement demonstrates that <strong>product identity (what is sold and by whom) dominates over market conditions (where it is sold)</strong> in determining fast-food pricing. We find evidence of partial minimum wage pass-through (21%), weak income effects (+$0.51 per $10K income), and strong brand effects (Domino's charges $5.89 more than Chipotle per item). These findings challenge conventional economic assumptions about geographic price discrimination and have implications for business strategy, consumer welfare, and policy analysis.
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h2>Key Results</h2>
-            <div class="key-results">
-                <div class="result-card">
-                    <div class="result-value">6,717</div>
-                    <div class="result-label">Restaurant Locations<br>Analyzed</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-value">1.72M</div>
-                    <div class="result-label">Menu Item<br>Observations</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-value">98.6%</div>
-                    <div class="result-label">ML Model<br>Accuracy (R²)</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-value">$0.75</div>
-                    <div class="result-label">Prediction Error<br>(MAE)</div>
-                </div>
-            </div>
-            
-            <h3>Statistical Findings</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Hypothesis Test</th>
-                        <th>F-Statistic</th>
-                        <th>P-Value</th>
-                        <th>Effect Size</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>H1: Restaurant Brand Effect</td>
-                        <td>67,318</td>
-                        <td>&lt; 0.001</td>
-                        <td>$5.89-$6.69 premium</td>
-                    </tr>
-                    <tr>
-                        <td>H2: Menu Item Type Effect</td>
-                        <td>416,933</td>
-                        <td>&lt; 0.001</td>
-                        <td>Mains > Sides > Drinks</td>
-                    </tr>
-                    <tr>
-                        <td>H3: Regional Variation</td>
-                        <td>1,408</td>
-                        <td>&lt; 0.001</td>
-                        <td>West: $14.34, Midwest: $12.91</td>
-                    </tr>
-                    <tr>
-                        <td>H4: Economic Variables</td>
-                        <td>35,730</td>
-                        <td>&lt; 0.001</td>
-                        <td>R² = 0.077 (weak)</td>
-                    </tr>
-                    <tr>
-                        <td>H5: Competition Effect</td>
-                        <td>36.4</td>
-                        <td>&lt; 0.001</td>
-                        <td>+$0.042 per restaurant</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <h3>Machine Learning Model Performance</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Model</th>
-                        <th>MAE ($)</th>
-                        <th>RMSE ($)</th>
-                        <th>R²</th>
-                        <th>Training Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Linear Regression</td>
-                        <td>3.31</td>
-                        <td>4.52</td>
-                        <td>0.796</td>
-                        <td>2 min</td>
-                    </tr>
-                    <tr>
-                        <td>Ridge Regression</td>
-                        <td>3.31</td>
-                        <td>4.53</td>
-                        <td>0.796</td>
-                        <td>2 min</td>
-                    </tr>
-                    <tr style="background-color: #e8f4f8; font-weight: bold;">
-                        <td>XGBoost</td>
-                        <td>0.75</td>
-                        <td>1.19</td>
-                        <td>0.986</td>
-                        <td>12 min</td>
-                    </tr>
-                    <tr>
-                        <td>CatBoost</td>
-                        <td>0.93</td>
-                        <td>1.45</td>
-                        <td>0.979</td>
-                        <td>9 min</td>
-                    </tr>
-                    <tr>
-                        <td>Neural Network</td>
-                        <td>0.84</td>
-                        <td>1.39</td>
-                        <td>0.981</td>
-                        <td>15 min</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="highlight-box">
-                <strong>Key Finding:</strong> XGBoost achieves 77% error reduction compared to linear models by capturing non-linear pricing patterns and feature interactions. The dramatic improvement from R² = 0.077 (economic variables only) to R² = 0.986 (with BERT embeddings) confirms that menu item identity is the dominant pricing determinant.
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h2>Methodology</h2>
-            
-            <ul class="methodology-list">
-                <li>
-                    <strong>Data Collection</strong>
-                    Web scraping of 6,717 restaurant locations using custom Python scripts targeting Chipotle, Domino's, and Papa John's APIs. Integration with US Census Bureau ZIP code income data, Department of Labor state minimum wage laws, and Bureau of Labor Statistics regional food retail prices.
-                </li>
-                <li>
-                    <strong>Data Preprocessing</strong>
-                    Multi-stage pipeline including state validation, brand-specific cleaning, geographic nearest-neighbor ZIP code imputation, and categorical encoding. Missing value rate reduced to 0.028% through systematic imputation strategies.
-                </li>
-                <li>
-                    <strong>Feature Engineering</strong>
-                    BERT-tiny embeddings (128-dimensional) for menu item text, target-based aggregations (chain/city/region average prices), competition measures (restaurant density), and derived price features (log-transform, relative positioning).
-                </li>
-                <li>
-                    <strong>Statistical Testing</strong>
-                    Five hypothesis tests using one-way ANOVA (H1-H3, H5) and multiple linear regression (H4). Significance level α = 0.05. Post-hoc Tukey HSD for pairwise comparisons.
-                </li>
-                <li>
-                    <strong>Machine Learning</strong>
-                    Grouped train-test split (80/20) by restaurant-city to prevent data leakage. Five model architectures trained: Linear/Ridge Regression, XGBoost (400 trees), CatBoost (300 iterations), Neural Network (3 layers, 256→128→64 neurons). Evaluation metrics: MAE, RMSE, R².
-                </li>
-                <li>
-                    <strong>Validation Strategy</strong>
-                    Cross-validation using grouped splits ensures models generalize to unseen restaurant locations. No price information from test restaurants used during training (strict prevention of target leakage).
-                </li>
-            </ul>
-        </div>
-        
-        <div class="content-section">
-            <h2>Repository Structure</h2>
-            <p>The complete codebase is organized as modular Python packages for reproducibility:</p>
-            
-            <div class="repository-structure">
-<pre><span class="tree-icon">fastfood-pricing/</span>
-├── README.md                          # Setup instructions
-├── requirements.txt                   # Python dependencies
-├── research_paper.pdf                 # Full paper (this document)
-├── <span class="tree-icon">data/</span>
-│   ├── raw/                          # Original scraped data
-│   │   ├── ChipotleMenuByLocation.csv
-│   │   ├── ChipotleLocations.csv
-│   │   ├── Dominos_ALL_USA.csv
-│   │   ├── papajohns_menu_USA.csv
-│   │   └── zip_income_data.csv
-│   └── processed/                    # Cleaned datasets
-│       └── all_dataset.csv
-├── <span class="tree-icon">src/</span>
-│   ├── __init__.py
-│   ├── <span class="tree-icon">data_collection/</span>
-│   │   ├── __init__.py
-│   │   ├── scrape_chipotle.py       # Chipotle API scraper
-│   │   ├── scrape_dominos.py        # Domino's API scraper
-│   │   ├── scrape_papajohns.py      # Papa John's scraper
-│   │   └── scrape_min_wage.py       # DOL wage data scraper
-│   ├── <span class="tree-icon">preprocessing/</span>
-│   │   ├── __init__.py
-│   │   ├── clean_data.py            # Data cleaning utilities
-│   │   ├── feature_engineering.py    # Feature creation
-│   │   └── integration.py           # Dataset merging
-│   ├── <span class="tree-icon">analysis/</span>
-│   │   ├── __init__.py
-│   │   ├── eda.py                   # Exploratory analysis
-│   │   ├── hypothesis_tests.py       # Statistical tests
-│   │   └── visualizations.py         # Plotting functions
-│   ├── <span class="tree-icon">models/</span>
-│   │   ├── __init__.py
-│   │   ├── linear_models.py          # Linear/Ridge regression
-│   │   ├── gradient_boosting.py      # XGBoost/CatBoost
-│   │   ├── neural_network.py         # PyTorch NN
-│   │   └── bert_embeddings.py        # Text encoding
-│   └── <span class="tree-icon">utils/</span>
-│       ├── __init__.py
-│       ├── config.py                 # Configuration
-│       └── evaluation.py             # Metrics computation
-├── <span class="tree-icon">notebooks/</span>
-│   ├── 01_data_collection.ipynb
-│   ├── 02_preprocessing.ipynb
-│   ├── 03_eda.ipynb
-│   ├── 04_hypothesis_testing.ipynb
-│   └── 05_machine_learning.ipynb
-├── <span class="tree-icon">results/</span>
-│   ├── figures/                      # Generated plots
-│   ├── tables/                       # Statistical tables
-│   └── models/                       # Saved model artifacts
-└── <span class="tree-icon">tests/</span>
-    ├── test_preprocessing.py
-    ├── test_models.py
-    └── test_utils.py
-</pre>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h2>Reproducibility</h2>
-            
-            <h3>Installation</h3>
-            <div class="highlight-box">
-                <code>git clone https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io.git</code><br>
-                <code>cd fastfood-pricing</code><br>
-                <code>pip install -r requirements.txt</code>
-            </div>
-            
-            <h3>Running the Pipeline</h3>
-            <p>Execute the complete analysis workflow:</p>
-            <div class="highlight-box">
-                <code>python -m src.data_collection.scrape_all</code> # Collect data<br>
-                <code>python -m src.preprocessing.clean_data</code> # Clean datasets<br>
-                <code>python -m src.analysis.hypothesis_tests</code> # Statistical tests<br>
-                <code>python -m src.models.train_all</code> # Train ML models<br>
-                <code>python -m src.analysis.generate_report</code> # Create paper
-            </div>
-            
-            <h3>System Requirements</h3>
-            <ul>
-                <li><strong>RAM:</strong> 16GB minimum (32GB recommended for full pipeline)</li>
-                <li><strong>GPU:</strong> NVIDIA GPU with 8GB+ VRAM for neural network training</li>
-                <li><strong>Storage:</strong> 5GB free space</li>
-                <li><strong>Python:</strong> 3.8+</li>
-            </ul>
-        </div>
-        
-        <div class="content-section">
-            <h2>Major Contributions</h2>
-            
-            <div class="highlight-box">
-                <h3>1. Empirical Evidence on Fast-Food Pricing</h3>
-                <p>First large-scale study (6,717 locations) examining geographic pricing variation in fast-food industry with comprehensive economic controls. Demonstrates weak income effects and moderate wage pass-through (21%).</p>
-            </div>
-            
-            <div class="highlight-box">
-                <h3>2. Machine Learning for Price Prediction</h3>
-                <p>Novel application of BERT text embeddings to menu pricing, achieving 98.6% accuracy. Demonstrates superiority of product-centric features over location-based economic variables.</p>
-            </div>
-            
-            <div class="highlight-box">
-                <h3>3. Methodological Framework</h3>
-                <p>Complete data science pipeline from web scraping to deployment, including rigorous leakage prevention through grouped train-test splits and proper feature engineering workflows.</p>
-            </div>
-            
-            <div class="highlight-box">
-                <h3>4. Policy Implications</h3>
-                <p>Evidence of 21% minimum wage pass-through provides empirical data for policy debates. Findings suggest fast-food chains maintain pricing consistency rather than aggressive local optimization.</p>
-            </div>
-        </div>
-        
-        <div class="content-section" id="bibtex">
-            <h2>Citation</h2>
-            <div class="citation-box">
-@article{kambhatla2025fastfood,
-  title={The Geography of Fast Food Pricing: Economic Determinants 
-         of Menu Prices Across America},
-  author={Kambhatla, Akhil and Gangrade, Mokshda and Agarwal, Vyom},
-  journal={DATA602 Course Project},
-  institution={University of Maryland, College Park},
-  year={2025},
-  month={December},
-  url={https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io}
-}
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h2>Acknowledgments</h2>
-            <p>
-                We thank the DATA602 course staff at University of Maryland for guidance on this research project. 
-                We acknowledge the public data sources: US Census Bureau, Department of Labor, Bureau of Labor Statistics, 
-                and USDA Economic Research Service. All restaurant pricing data was collected through publicly accessible 
-                APIs for academic research purposes.
-            </p>
-        </div>
-    </div>
-    
-    <footer>
-        <p><strong>The Geography of Fast Food Pricing</strong></p>
-        <p>© 2025 Akhil Kambhatla, Mokshda Gangrade, Vyom Agarwal</p>
-        <p>University of Maryland | Department of Information Studies</p>
-        <p style="margin-top: 20px;">
-            <a href="https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io" style="color: #61dafb; text-decoration: none;">GitHub Repository</a> | 
-            <a href="research_paper.pdf" style="color: #61dafb; text-decoration: none;">Download Paper</a> | 
-            <a href="https://akhil-kambhatla.github.io" style="color: #61dafb; text-decoration: none;">Interactive Demo</a>
-        </p>
-    </footer>
-</body>
-</html>
+# The Geography of Fast Food Pricing: Economic Determinants of Menu Prices Across America
+
+A comprehensive data science tutorial analyzing how local economic conditions, minimum wages, and business models influence fast-food menu pricing across 6,717 restaurants in the United States.
+
+---
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [System Requirements](#system-requirements)
+3. [Installation](#installation)
+4. [Data Files Setup](#data-files-setup)
+5. [Running the Notebooks](#running-the-notebooks)
+6. [Troubleshooting](#troubleshooting)
+7. [Expected Results](#expected-results)
+
+---
+
+## Project Overview
+
+This tutorial demonstrates the complete data science lifecycle:
+- **Data Collection**: Web scraping from Chipotle, Domino's, Papa John's, and minimum wage data
+- **Data Integration**: Merging with US Census income data, DOL minimum wage data, and BLS regional food prices
+- **Statistical Analysis**: 5 hypothesis tests using ANOVA and regression
+- **Machine Learning**: 5 predictive models (Linear Regression, Ridge, XGBoost, CatBoost, Neural Network)
+
+---
+
+## System Requirements
+
+**Hardware Requirements:**
+- **RAM**: 15GB minimum required
+- **Storage**: 2GB free space in Google Drive
+- **GPU**: T4 GPU recommended (available in Google Colab free tier)
+
+**Important Note About RAM:**
+Because Google Colab's free tier RAM is not sufficient to run the entire analysis in one notebook, we have split the project into 2 separate notebooks:
+
+1. **Notebook 1**: Data Collection → Preprocessing → EDA → Hypothesis Testing
+2. **Notebook 2**: Machine Learning Model Training and Deployment
+
+This split ensures smooth execution without memory errors.
+
+**Platform:**
+- Google Colab (required)
+- Google Account
+- Stable internet connection
+
+---
+
+## Installation
+
+**No manual installation needed.** Google Colab comes with most libraries pre-installed.
+
+If you encounter an error saying a library is not installed (e.g., `ModuleNotFoundError: No module named 'xgboost'`), install it directly in Colab:
+
+```python
+!pip install xgboost
+```
+
+Or for multiple packages:
+
+```python
+!pip install xgboost catboost transformers
+```
+
+Common packages that may need installation:
+- `xgboost` (gradient boosting)
+- `catboost` (gradient boosting with categorical handling)
+- `transformers` (BERT embeddings)
+- `folium` (interactive maps)
+
+---
+
+## Data Files Setup
+
+### Step 1: Access the Shared Google Drive
+
+All required data files are available in this shared Google Drive folder:
+
+**Link**: https://drive.google.com/drive/u/0/folders/13Qsasbw_tvR5IzkeL9_DdrsE2OzAg60d
+
+This folder contains:
+- **Restaurant data** (4 files): Chipotle, Domino's, Papa John's menus and locations
+- **USDA rural-urban codes** (1 file)
+- **Regional food retail prices** (4 files): West, South, Midwest, Northeast regions
+- **US ZIP codes** (1 file): All ZIP codes for mapping
+
+**Total: 10 data files**
+
+### Step 2: Download Files to Your Computer
+
+1. Click the Google Drive link above
+2. Select all files (click first file, hold Shift, click last file)
+3. Right-click → Download
+4. A ZIP file will be created and downloaded
+5. Extract the ZIP file on your computer
+
+### Step 3: Upload to Your Personal Google Drive
+
+1. Open your Google Drive: https://drive.google.com
+
+2. Create this folder structure:
+   ```
+   My Drive/
+   └── 602_project/
+       └── Data/
+   ```
+
+3. Upload all 10 files:
+   - Navigate to `My Drive/602_project/Data/`
+   - Click "+ New" → "File upload"
+   - Select all 10 CSV files
+   - Wait for upload to complete
+
+4. Your final structure should be:
+   ```
+   My Drive/
+   └── 602_project/
+       └── Data/
+           ├── ChipotleMenuByLocation.csv
+           ├── ChipotleLocations.csv
+           ├── Dominos_ALL_USA.csv
+           ├── papajohns_menu_USA.csv
+           ├── Ruralurbancontinuumcodes2023.csv
+           ├── Food_retail_prices_Midwest_region_US.csv
+           ├── Food_retail_prices_Northeast_region_US.csv
+           ├── Food_retail_prices_South_region_US.csv
+           ├── Food_retail_prices_West_region_US.csv
+           └── zip_income_data.csv
+   ```
+
+---
+
+## Running the Notebooks
+
+### Important: Two-Notebook Structure
+
+Due to RAM limitations in Colab free tier, the project is split into two notebooks:
+
+**Notebook 1: Data Collection through Hypothesis Testing**
+- Sections: Data Collection → Preprocessing → EDA → Hypothesis Testing
+- Time: ~10-15 minutes
+- RAM: Fits within free tier limits
+
+**Notebook 2: Machine Learning Models**
+- Sections: ML Model Training → Performance Comparison → Deployment
+- Time: ~20-30 minutes with T4 GPU
+- RAM: Fits within free tier limits
+
+Both notebooks can be downloaded from the GitHub repository:
+**https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io**
+
+---
+
+### Running Notebook 1: Data Collection through Hypothesis Testing
+
+**Step 1: Open in Google Colab**
+
+1. Download `Notebook_1_Data_Analysis.ipynb` from GitHub
+2. Go to https://colab.research.google.com
+3. Click "File" → "Upload notebook"
+4. Select the notebook file
+
+**Step 2: Set Runtime (Recommended)**
+
+1. Click "Runtime" → "Change runtime type"
+2. Hardware accelerator: "GPU" → Select "T4 GPU"
+3. Click "Save"
+
+**Step 3: Mount Google Drive**
+
+1. Run Cell 10 (Google Drive mount cell)
+2. Click "Connect to Google Drive"
+3. Allow permissions
+4. Wait for "Mounted at /content/drive"
+
+**Step 4: Run All Cells**
+
+1. Click "Runtime" → "Run all"
+2. The notebook will execute all sections in order
+3. Expected time: ~10-15 minutes
+
+**What You'll See:**
+- Dataset statistics (6,717 restaurants, 3,077 cities)
+- Brand price comparisons
+- Geographic visualizations
+- Correlation analysis
+- 5 hypothesis test results
+
+---
+
+### Running Notebook 2: Machine Learning Models
+
+**Step 1: Open in Google Colab**
+
+1. Download `Notebook_2_Machine_Learning.ipynb` from GitHub
+2. Upload to Colab (same process as Notebook 1)
+
+**Step 2: Set Runtime with GPU**
+
+1. Click "Runtime" → "Change runtime type"
+2. Hardware accelerator: "GPU" → Select "T4 GPU"
+3. **Important**: GPU is highly recommended for this notebook
+4. Click "Save"
+
+**Step 3: Mount Google Drive**
+
+Same as Notebook 1 - run the Drive mount cell
+
+**Step 4: Run All Cells**
+
+1. Click "Runtime" → "Run all"
+2. The notebook will:
+   - Load pre-processed data
+   - Generate BERT embeddings (~5 minutes)
+   - Train 5 ML models (~15-20 minutes with GPU)
+   - Create performance comparison
+
+**What You'll See:**
+- Progress bars for BERT embeddings
+- Model training progress
+- Performance metrics (MAE, RMSE, R²)
+- Accuracy comparison table
+- XGBoost inference example
+
+**Expected Time:**
+- With T4 GPU: ~20-30 minutes
+- Without GPU: ~60-90 minutes (not recommended)
+
+---
+
+## Troubleshooting
+
+### Issue 1: FileNotFoundError
+
+**Error**: `FileNotFoundError: [Errno 2] No such file or directory`
+
+**Solution**:
+1. Check that all 10 files are in `My Drive/602_project/Data/`
+2. Verify file names match exactly (case-sensitive)
+3. Re-mount Google Drive (run the mount cell again)
+4. Check folder structure: `My Drive/602_project/Data/` (not `MyDrive` or other variations)
+
+---
+
+### Issue 2: ModuleNotFoundError
+
+**Error**: `ModuleNotFoundError: No module named 'package_name'`
+
+**Solution**:
+Install the missing package in a code cell:
+
+```python
+!pip install package_name
+```
+
+Example for common packages:
+```python
+!pip install xgboost catboost transformers folium
+```
+
+Then restart runtime:
+- Runtime → Restart runtime
+- Re-run all cells
+
+---
+
+### Issue 3: Out of Memory / Session Crashed
+
+**Error**: "Your session crashed after using all available RAM"
+
+**Solution**:
+This is why we split into 2 notebooks. If you still get this error:
+
+1. Make sure you're running the correct notebook (1 or 2, not combined)
+2. Use GPU runtime: Runtime → Change runtime type → GPU (T4)
+3. Restart runtime and try again: Runtime → Restart runtime
+4. Close other browser tabs to free memory
+
+---
+
+### Issue 4: Google Drive Won't Mount
+
+**Error**: Can't connect to Google Drive
+
+**Solution**:
+1. Click the folder icon in left sidebar
+2. Click "Mount Drive" button
+3. Allow permissions when prompted
+4. Wait for "Mounted at /content/drive" message
+5. If still failing, restart runtime and try again
+
+---
+
+### Issue 5: Slow BERT Embedding Generation
+
+**Issue**: Cell generating BERT embeddings taking very long
+
+**Solution**:
+1. Make sure you're using T4 GPU runtime
+2. Check GPU is active: Runtime → View runtime type (should show "GPU T4")
+3. If on CPU, expect 20-30 minutes (this is normal)
+4. Progress bar will show you it's working
+
+---
+
+### Issue 6: Minimum Wage Data Not Loading
+
+**Error**: Error when scraping minimum wage data
+
+**Solution**:
+1. Check internet connection
+2. Retry the cell (sometimes temporary network issue)
+3. The code scrapes from: https://www.dol.gov/agencies/whd/mw-consolidated
+4. If website is down or changed structure, open a GitHub issue
+
+---
+
+## Expected Results
+
+### Notebook 1: Data Collection through Hypothesis Testing
+
+**Section 4: EDA**
+- Dataset: 6,717 restaurants, 3,077 cities, 1,265 menu items
+- Total observations: 1.72 million
+- Brand averages: Chipotle $11.44, Domino's $14.32, Papa John's $13.88
+- 8 of top 10 expensive cities in California
+- Interactive geographic heatmap
+
+**Section 5: Hypothesis Testing**
+- H1: Restaurant brand effect (F = 67,318, p < 0.001)
+- H2: Item type effect (mains > sides > drinks)
+- H3: Regional differences (West: $14.34, Midwest: $12.91)
+- H4: Economic variables explain only 7.7% variance (R² = 0.077)
+  - Income coefficient: 2.465e-06
+  - Min wage coefficient: 0.160
+  - Brand effects: Domino's +$5.89, Papa John's +$6.69 vs Chipotle
+- H5: Paradoxical competition effect (+$0.042, R² = 0.019)
+
+### Notebook 2: Machine Learning Models
+
+**Model Performance:**
+- Linear Regression: MAE $3.31, R² 0.796
+- Ridge Regression: MAE $3.31, R² 0.796
+- **XGBoost (Best)**: MAE $0.75, R² 0.986
+- CatBoost: MAE $0.93, R² 0.979
+- Neural Network: MAE $0.84, R² 0.981
+
+**Key Insight**: ML models achieve 98.6% R² (XGBoost), which is 12.7× better than hypothesis testing's 7.7%. This proves that product identity (menu item + brand) matters far more than location economics.
+
+---
+
+## Data Sources
+
+All data sources are publicly available:
+
+**Restaurant Data** (provided in Google Drive):
+- Chipotle: https://www.chipotle.com
+- Domino's: https://www.dominos.com
+- Papa John's: https://www.papajohns.com
+- Collected: July 2024
+
+**Minimum Wage** (auto-scraped by code):
+- Department of Labor: https://www.dol.gov/agencies/whd/mw-consolidated
+
+**ZIP Code Income** (provided in Google Drive):
+- US Census Bureau: https://data.census.gov/map?q=Income+by+Zip+code+tabulation+area&layer=VT_2023_860_Z2_PY_D1
+- American Community Survey (2022)
+
+**USDA Rural-Urban Codes** (provided in Google Drive):
+- USDA Economic Research Service: https://www.ers.usda.gov/data-products/rural-urban-continuum-codes/
+- Rural-Urban Continuum Codes (2023)
+
+**Regional Food Prices** (provided in Google Drive):
+- Bureau of Labor Statistics - Average Retail Food Prices by Region:
+  - West: https://www.bls.gov/regions/mid-atlantic/data/averageretailfoodandenergyprices_usandwest_table.htm
+  - South: https://www.bls.gov/regions/mid-atlantic/data/averageretailfoodandenergyprices_usandsouth_table.htm
+  - Midwest: https://www.bls.gov/regions/mid-atlantic/data/averageretailfoodandenergyprices_usandmidwest_table.htm
+  - Northeast: https://www.bls.gov/regions/mid-atlantic/data/averageretailfoodandenergyprices_usandnortheast_table.htm
+
+---
+
+## Project Repository
+
+GitHub: https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io
+
+Contents:
+- Notebook 1: Data Collection through Hypothesis Testing
+- Notebook 2: Machine Learning Models
+- Data files (link to Google Drive)
+- README documentation
+
+---
+
+## Citation
+
+If you use this project for academic work:
+
+```
+Akhil Kambhatla, Mokshda Gangrade, Vyom Agarwal. (2025).
+The Geography of Fast Food Pricing: Economic Determinants of Menu Prices Across America. 
+GitHub: https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io
+```
+
+---
+
+## Contact
+
+For questions or issues:
+- GitHub Issues: https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io/issues
+
+---
+
+**Last Updated**: December 2025
