@@ -270,10 +270,10 @@
         <div class="container">
             <h1>The Geography of Fast Food Pricing:<br>Economic Determinants of Menu Prices Across America</h1>
             <div class="authors">
-                Akhil Kambhatla<sup>1</sup> • Mokshda Gangrade<sup>1</sup> • Vyom Agarwal<sup>1</sup>
+                Vyom Agarwal<sup>1</sup> • Mokshda Gangrade<sup>1</sup> • Akhil Kambhatla<sup>1</sup>
             </div>
             <div class="affiliation">
-                <sup>1</sup>Department of Information Studies, University of Maryland, College Park
+                <sup>1</sup>Department of Computer, Mathematical, and Natural Sciences, University of Maryland, College Park
             </div>
             <div class="conference-info">
                 DATA602 - Principles of Data Science | December 2025
@@ -282,10 +282,10 @@
     </div>
     
     <div class="container">
-        <div class="paper-actions">
+        <div class="paper-actions">https://github.com/vyomya/restaurant-pricing/edit/main/docs/index.html
             <a href="research_paper.pdf" class="btn btn-primary" download>📄 Download Paper (PDF)</a>
-            <a href="https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io" class="btn btn-secondary" target="_blank">💻 View Code</a>
-            <a href="https://akhil-kambhatla.github.io" class="btn btn-secondary" target="_blank">📊 Interactive Demo</a>
+            <a href="https://github.com/vyomya/restaurant-pricing" class="btn btn-secondary" target="_blank">💻 View Code</a>
+            <a href="https://akhil-kambhatla.github.io" class="btn btn-secondary" target="_blank">Notebook and Project Report</a>
             <a href="#bibtex" class="btn btn-secondary">📚 BibTeX</a>
         </div>
         
@@ -452,61 +452,25 @@
             <p>The complete codebase is organized as modular Python packages for reproducibility:</p>
             
             <div class="repository-structure">
-<pre><span class="tree-icon">fastfood-pricing/</span>
+<pre><span class="tree-icon">restaurant-pricing/</span>
 ├── README.md                          # Setup instructions
 ├── requirements.txt                   # Python dependencies
 ├── research_paper.pdf                 # Full paper (this document)
-├── <span class="tree-icon">data/</span>
-│   ├── raw/                          # Original scraped data
-│   │   ├── ChipotleMenuByLocation.csv
-│   │   ├── ChipotleLocations.csv
-│   │   ├── Dominos_ALL_USA.csv
-│   │   ├── papajohns_menu_USA.csv
-│   │   └── zip_income_data.csv
-│   └── processed/                    # Cleaned datasets
-│       └── all_dataset.csv
-├── <span class="tree-icon">src/</span>
-│   ├── __init__.py
-│   ├── <span class="tree-icon">data_collection/</span>
-│   │   ├── __init__.py
-│   │   ├── scrape_chipotle.py       # Chipotle API scraper
-│   │   ├── scrape_dominos.py        # Domino's API scraper
-│   │   ├── scrape_papajohns.py      # Papa John's scraper
-│   │   └── scrape_min_wage.py       # DOL wage data scraper
-│   ├── <span class="tree-icon">preprocessing/</span>
-│   │   ├── __init__.py
-│   │   ├── clean_data.py            # Data cleaning utilities
-│   │   ├── feature_engineering.py    # Feature creation
-│   │   └── integration.py           # Dataset merging
-│   ├── <span class="tree-icon">analysis/</span>
-│   │   ├── __init__.py
-│   │   ├── eda.py                   # Exploratory analysis
-│   │   ├── hypothesis_tests.py       # Statistical tests
-│   │   └── visualizations.py         # Plotting functions
-│   ├── <span class="tree-icon">models/</span>
-│   │   ├── __init__.py
-│   │   ├── linear_models.py          # Linear/Ridge regression
-│   │   ├── gradient_boosting.py      # XGBoost/CatBoost
-│   │   ├── neural_network.py         # PyTorch NN
-│   │   └── bert_embeddings.py        # Text encoding
-│   └── <span class="tree-icon">utils/</span>
-│       ├── __init__.py
-│       ├── config.py                 # Configuration
-│       └── evaluation.py             # Metrics computation
+├── <span class="tree-icon">Data/</span>
+│   ├── ChipotleMenuByLocation.csv
+│   ├── ChipotleLocations.csv
+│   ├── Dominos_ALL_USA.csv
+│   ├── papajohns_menu_USA.csv
+│   ├── zip_income_data.csv
+│   └── all_dataset.csv
 ├── <span class="tree-icon">notebooks/</span>
-│   ├── 01_data_collection.ipynb
-│   ├── 02_preprocessing.ipynb
-│   ├── 03_eda.ipynb
-│   ├── 04_hypothesis_testing.ipynb
-│   └── 05_machine_learning.ipynb
-├── <span class="tree-icon">results/</span>
-│   ├── figures/                      # Generated plots
-│   ├── tables/                       # Statistical tables
-│   └── models/                       # Saved model artifacts
-└── <span class="tree-icon">tests/</span>
-    ├── test_preprocessing.py
-    ├── test_models.py
-    └── test_utils.py
+│   ├── 01_data_handling.ipynb
+│   └── 02_ML_modelling.ipynb
+└── <span class="tree-icon">results/</span>
+    ├── figures/                      # Generated plots
+    ├── tables/                       # Statistical tables
+    └── models/                       # Saved model artifacts
+
 </pre>
             </div>
         </div>
@@ -570,12 +534,12 @@
 @article{kambhatla2025fastfood,
   title={The Geography of Fast Food Pricing: Economic Determinants 
          of Menu Prices Across America},
-  author={Kambhatla, Akhil and Gangrade, Mokshda and Agarwal, Vyom},
+  author={Agarwal, Vyom and Gangrade, Mokshda and Kambhatla, Akhil},
   journal={DATA602 Course Project},
   institution={University of Maryland, College Park},
   year={2025},
   month={December},
-  url={https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io}
+  url={https://vyomya.github.io/restaurant-pricing/}
 }
             </div>
         </div>
@@ -596,9 +560,9 @@
         <p>© 2025 Akhil Kambhatla, Mokshda Gangrade, Vyom Agarwal</p>
         <p>University of Maryland | Department of Information Studies</p>
         <p style="margin-top: 20px;">
-            <a href="https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io" style="color: #61dafb; text-decoration: none;">GitHub Repository</a> | 
+            <a href="https://github.com/vyomya/restaurant-pricing" style="color: #61dafb; text-decoration: none;">GitHub Repository</a> | 
             <a href="research_paper.pdf" style="color: #61dafb; text-decoration: none;">Download Paper</a> | 
-            <a href="https://akhil-kambhatla.github.io" style="color: #61dafb; text-decoration: none;">Interactive Demo</a>
+            <a href="https://akhil-kambhatla.github.io" style="color: #61dafb; text-decoration: none;">Notebook and Project Report</a>
         </p>
     </footer>
 </body>
