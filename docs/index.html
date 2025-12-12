@@ -448,63 +448,6 @@
         </div>
         
         <div class="content-section">
-            <h2>Repository Structure</h2>
-            <p>The complete codebase is organized as modular Python packages for reproducibility:</p>
-            
-            <div class="repository-structure">
-<pre><span class="tree-icon">restaurant-pricing/</span>
-├── README.md                          # Setup instructions
-├── requirements.txt                   # Python dependencies
-├── research_paper.pdf                 # Full paper (this document)
-├── <span class="tree-icon">Data/</span>
-│   ├── ChipotleMenuByLocation.csv
-│   ├── ChipotleLocations.csv
-│   ├── Dominos_ALL_USA.csv
-│   ├── papajohns_menu_USA.csv
-│   ├── zip_income_data.csv
-│   └── all_dataset.csv
-├── <span class="tree-icon">notebooks/</span>
-│   ├── 01_data_handling.ipynb
-│   └── 02_ML_modelling.ipynb
-└── <span class="tree-icon">results/</span>
-    ├── figures/                      # Generated plots
-    ├── tables/                       # Statistical tables
-    └── models/                       # Saved model artifacts
-
-</pre>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h2>Reproducibility</h2>
-            
-            <h3>Installation</h3>
-            <div class="highlight-box">
-                <code>git clone https://github.com/Akhil-Kambhatla/Akhil-kambhatla.github.io.git</code><br>
-                <code>cd fastfood-pricing</code><br>
-                <code>pip install -r requirements.txt</code>
-            </div>
-            
-            <h3>Running the Pipeline</h3>
-            <p>Execute the complete analysis workflow:</p>
-            <div class="highlight-box">
-                <code>python -m src.data_collection.scrape_all</code> # Collect data<br>
-                <code>python -m src.preprocessing.clean_data</code> # Clean datasets<br>
-                <code>python -m src.analysis.hypothesis_tests</code> # Statistical tests<br>
-                <code>python -m src.models.train_all</code> # Train ML models<br>
-                <code>python -m src.analysis.generate_report</code> # Create paper
-            </div>
-            
-            <h3>System Requirements</h3>
-            <ul>
-                <li><strong>RAM:</strong> 16GB minimum (32GB recommended for full pipeline)</li>
-                <li><strong>GPU:</strong> NVIDIA GPU with 8GB+ VRAM for neural network training</li>
-                <li><strong>Storage:</strong> 5GB free space</li>
-                <li><strong>Python:</strong> 3.8+</li>
-            </ul>
-        </div>
-        
-        <div class="content-section">
             <h2>Major Contributions</h2>
             
             <div class="highlight-box">
